@@ -90,3 +90,20 @@ console.log(navigator.userAgent)
 
 });
 
+function phoneCall (number)
+{
+  var pMessage = {
+    event_name: 'call',
+    extension_number: number
+  }
+// check os
+
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  if (isMobile)
+  {
+  console.log('chat ii post')
+  window.postMessage(JSON.stringify(pMessage))
+  }
+
+}
+
