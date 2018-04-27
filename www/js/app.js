@@ -50,4 +50,35 @@ $$('#my-login-screen .login-button').on('click', function () {
 
   // Alert username and password
   app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+
+
+  
 });
+
+$$('#call').on('click', function () {
+
+    var pMessage = {
+      event_name: 'call',
+      extension_number: '1048'
+    }
+ // check os
+ 
+  window.postMessage(JSON.stringify(pMessage))
+
+});
+$$('#chat').on('click', function () {
+
+  var pMessage = {
+    event_name: 'chat',
+    room_name: 'fp9FjPyYJuqyX97Gt'
+  }
+// check os
+ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+ if (isMobile)
+ {
+   window.postMessage(JSON.stringify(pMessage))
+ }
+  
+
+});
+
