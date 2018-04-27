@@ -67,7 +67,7 @@ $$('#call').on('click', function () {
 
 });
 $$('#chat').on('click', function () {
-
+  console.log('chat ii')
   var pMessage = {
     event_name: 'chat',
     room_name: 'fp9FjPyYJuqyX97Gt'
