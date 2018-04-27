@@ -79,6 +79,10 @@ routes = [
       }, 1000);
     },
   },
+  {
+    path: '/makeAppointment/',
+    url: './pages/makeAppointment.html',
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     path: '(.*)',
