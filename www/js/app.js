@@ -63,7 +63,13 @@ $$('#call').on('click', function () {
     }
  // check os
  
-  window.postMessage(JSON.stringify(pMessage))
+ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+ if (isMobile)
+ {
+  console.log('chat ii post')
+   window.postMessage(JSON.stringify(pMessage))
+ }
+  
 
 });
 $$('#chat').on('click', function () {
@@ -73,6 +79,7 @@ $$('#chat').on('click', function () {
     room_name: 'fp9FjPyYJuqyX97Gt'
   }
 // check os
+console.log(navigator.userAgent)
  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
  if (isMobile)
  {
