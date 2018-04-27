@@ -76,6 +76,7 @@ $$('#chat').on('click', function () {
  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
  if (isMobile)
  {
+  console.log('chat ii post')
    window.postMessage(JSON.stringify(pMessage))
  }
   
