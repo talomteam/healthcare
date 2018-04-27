@@ -31,10 +31,10 @@ var app  = new Framework7({
 });
 
 // Init/Create left panel view
-var mainView = app.views.create('.view-left', {
+/* var mainView = app.views.create('.view-left', {
   url: '/'
 });
-
+ */
 // Init/Create main view
 var mainView = app.views.create('.view-main', {
   url: '/'
