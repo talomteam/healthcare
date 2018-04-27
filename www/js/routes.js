@@ -87,6 +87,10 @@ routes = [
     path: '/doctorDirectory/',
     url: './pages/doctorDirectory.html',
   },
+  {
+    path: '/patientHistory/',
+    url: './pages/patientHistory.html',
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     path: '(.*)',
