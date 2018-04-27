@@ -83,6 +83,10 @@ routes = [
     path: '/makeAppointment/',
     url: './pages/makeAppointment.html',
   },
+  {
+    path: '/doctorDirectory/',
+    url: './pages/doctorDirectory.html',
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     path: '(.*)',
