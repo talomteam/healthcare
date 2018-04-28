@@ -5,7 +5,7 @@ var $$ = Dom7;
 var app  = new Framework7({
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
-  name: 'Framework7', // App name
+  name: 'HealthCare', // App name
   theme: 'auto', // Automatic theme detection
   // App root data
   data: function () {
@@ -28,6 +28,7 @@ var app  = new Framework7({
   panel: {
     leftBreakpoint: 960,
   },
+  
 });
 
 // Init/Create left panel view
@@ -41,19 +42,25 @@ var mainView = app.views.create('.view-main', {
 });
 
 // Login Screen Demo
-$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
-
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
-
-  // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 
 
+  $$('#my-login-screen .login-button').on('click', function () {
+    var username = $$('#my-login-screen [name="username"]').val();
+    var password = $$('#my-login-screen [name="password"]').val();
   
-});
+    // Close login screen
+    app.loginScreen.close('#my-login-screen');
+  
+    // Alert username and password
+    var msg = "ข้อมูลการจองได้ทำการส่งไปเรียบร้อยแล้ว ขอให้ท่านรอการยืนยันจากทางโรงพยาบาล application จะทำการแจ้งเตือนให้ทราบ"
+    app.dialog.alert(msg);
+  
+  
+    
+  });
+
+
+
 
 $$('#call').on('click', function () {
 
