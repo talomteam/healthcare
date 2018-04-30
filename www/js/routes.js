@@ -81,7 +81,7 @@ routes = [
   },
   {
     path: '/makeAppointment/',
-    url: './pages/makeAppointment.html',
+    componentUrl: './pages/makeAppointment.html',
   },
   {
     path: '/doctorDirectory/',
