@@ -79,7 +79,7 @@
               </div>
               <div class="card-footer">
                   <a href="#" class="link" onclick="phoneCall(9233)"><i class="f7-icons">phone_fill</i></a>
-                  <a href="#" class="link">จองคิวตอนนี้</a>
+                  <a href="#" class="link" @click="addQueue('q2')" >จองคิวตอนนี้</a>
                   <a href="#" class="link login-screen-open" data-login-screen="#my-login-screen">จองคิวล่วงหน้า</a>
                 </div>
             </div> 
@@ -114,7 +114,7 @@
                 </div>
                 <div class="card-footer">
                     <a href="#" class="link" onclick="phoneCall(9233)"><i class="f7-icons">phone_fill</i></a>
-                    <a href="#" class="link">จองคิวตอนนี้</a>
+                    <a href="#" class="link" @click="addQueue('q3')">จองคิวตอนนี้</a>
                     <a href="#" class="link login-screen-open" data-login-screen="#my-login-screen">จองคิวล่วงหน้า</a>
                   </div>
               </div> 
@@ -149,7 +149,7 @@
                   </div>
                   <div class="card-footer">
                       <a href="#" class="link" onclick="phoneCall(9233)"><i class="f7-icons">phone_fill</i></a>
-                      <a href="#" class="link">จองคิวตอนนี้</a>
+                      <a href="#" class="link" @click="addQueue('q4')">จองคิวตอนนี้</a>
                       <a href="#" class="link login-screen-open" data-login-screen="#my-login-screen">จองคิวล่วงหน้า</a>
                     </div>
                 </div> 
@@ -186,7 +186,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="#" class="link" onclick="phoneCall(9233)"><i class="f7-icons">phone_fill</i></a>
-                        <a href="#" class="link">จองคิวตอนนี้</a>
+                        <a href="#" class="link" @click="addQueue('q5')">จองคิวตอนนี้</a>
                         <a href="#" class="link login-screen-open" data-login-screen="#my-login-screen">จองคิวล่วงหน้า</a>
                       </div>
                   </div> 
@@ -239,14 +239,20 @@
         $$('#q4_cur').text(q4[1])
         $$('#q5_cur').text(q5[1])
 
-        $$('#q1_my').text(this.getCookie("q1_my") == "" ? "-" : this.getCookie("q1_my") )
-        $$('#q2_my').text(this.getCookie("q2_my") == "" ? "-" : this.getCookie("q2_my"))
-        $$('#q3_my').text(this.getCookie("q3_my") == "" ? "-" : this.getCookie("q3_my"))
-        $$('#q4_my').text(this.getCookie("q4_my") == "" ? "-" : this.getCookie("q4_my"))
-        $$('#q5_my').text(this.getCookie("q5_my") == "" ? "-" : this.getCookie("q5_my"))
+        $$('#q1_my').text(self.getCookie("q1_my") == "" ? "-" : self.getCookie("q1_my") )
+        $$('#q2_my').text(self.getCookie("q2_my") == "" ? "-" : self.getCookie("q2_my"))
+        $$('#q3_my').text(self.getCookie("q3_my") == "" ? "-" : self.getCookie("q3_my"))
+        $$('#q4_my').text(self.getCookie("q4_my") == "" ? "-" : self.getCookie("q4_my"))
+        $$('#q5_my').text(self.getCookie("q5_my") == "" ? "-" : self.getCookie("q5_my"))
 
-
+        
+        
         setInterval(function(){ 
+          $$('#q1_my').text(q1[1] > self.getCookie("q1_my") ? "-" : self.getCookie("q1_my"))
+          $$('#q2_my').text(q2[1] > self.getCookie("q2_my") ? "-" : self.getCookie("q2_my"))
+          $$('#q3_my').text(q3[1] > self.getCookie("q3_my")? "-" : self.getCookie("q3_my"))
+          $$('#q4_my').text(q4[1] > self.getCookie("q4_my") ? "-" : self.getCookie("q4_my"))
+          $$('#q5_my').text(q5[1] > self.getCookie("q5_my") ? "-" : self.getCookie("q5_my"))
 
           var x = Math.floor((Math.random() * 2) + 1);
 
@@ -283,6 +289,9 @@
           $$('#q3_cur').text(q3[1])
           $$('#q4_cur').text(q4[1])
           $$('#q5_cur').text(q5[1])
+
+
+          
           //console.log("xx"+ q1[1])
         }, 10000);
 
