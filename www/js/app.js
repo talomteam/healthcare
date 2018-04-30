@@ -86,7 +86,7 @@ $$('#chat').on('click', function () {
   console.log('chat ii')
   var pMessage = {
     event_name: 'chat',
-    room_name: 'fp9FjPyYJuqyX97Gt'
+    room_name: 'pfFmWWe6N4sacpzP9'
   }
 // check os
 console.log(navigator.userAgent)
