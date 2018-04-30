@@ -216,6 +216,9 @@
       }
     },
     on: {
+      pageReInit: function(e,page){
+        console.log("reinit");
+      },
       pageInit: function (e, page) {
         var self = this;
         var today = new Date();
@@ -226,6 +229,7 @@
         var q3 = [5,18];
         var q4 = [2,9];
         var q5 = [5,12];
+
 
         $$('#q1_wait').text(q1[0])
         $$('#q2_wait').text(q2[0])
