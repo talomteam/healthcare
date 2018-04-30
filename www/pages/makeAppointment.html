@@ -27,7 +27,7 @@
                     <div class="row">
                       <div class="col-33">
                         <h3>คิวที่รอ</h3>
-                        <p style="font-size:2em" id="q1_wait">20</p>
+                        <p style="font-size:2em" id="q1_wait">0</p>
                       </div>
                       <div class="col-33">
                           <h3>คิวปัจจุบัน</h3>
@@ -44,7 +44,7 @@
             </div>
             <div class="card-footer">
                 <a href="#" class="link" onclick="phoneCall(9233)"><i class="f7-icons">phone_fill</i></a>
-                <a href="#" class="link">จองคิวตอนนี้</a>
+                <a href="#" class="link" @click="addQueue('q1')">จองคิวตอนนี้</a>
                 <a href="#" class="link login-screen-open" data-login-screen="#my-login-screen">จองคิวล่วงหน้า</a>
               </div>
           </div> 
@@ -62,7 +62,7 @@
                     <div class="row">
                       <div class="col-33">
                         <h3>คิวที่รอ</h3>
-                        <p style="font-size:2em" id="q2_wait">30</p>
+                        <p style="font-size:2em" id="q2_wait">0</p>
                       </div>
                       <div class="col-33">
                           <h3>คิวปัจจุบัน</h3>
@@ -97,7 +97,7 @@
                       <div class="row">
                         <div class="col-33">
                           <h3>คิวที่รอ</h3>
-                          <p style="font-size:2em" id="q3_wait">10</p>
+                          <p style="font-size:2em" id="q3_wait">0</p>
                         </div>
                         <div class="col-33">
                             <h3>คิวปัจจุบัน</h3>
@@ -132,7 +132,7 @@
                         <div class="row">
                           <div class="col-33">
                             <h3>คิวที่รอ</h3>
-                            <p style="font-size:2em" id="q4_wait">20</p>
+                            <p style="font-size:2em" id="q4_wait">0</p>
                           </div>
                           <div class="col-33">
                               <h3>คิวปัจจุบัน</h3>
@@ -168,11 +168,11 @@
                               <div class="row">
                                 <div class="col-33">
                                   <h3>คิวที่รอ</h3>
-                                  <p style="font-size:2em" id="q5_wait">100</p>
+                                  <p style="font-size:2em" id="q5_wait">0</p>
                                 </div>
                                 <div class="col-33">
                                     <h3>คิวปัจจุบัน</h3>
-                                    <p style="font-size:2em" id="q5_cur">100</p>
+                                    <p style="font-size:2em" id="q5_cur">0</p>
                                 </div>
                                 <div class="col-33">
                                   <h3>คิวของฉัน</h3>
@@ -197,17 +197,102 @@
 </template>
 <script>
   return {
+    methods: {
+      getCookie:function(name){
+        var re = new RegExp(name + "=([^;]+)");
+        var value = re.exec(document.cookie);
+        return (value != null) ? unescape(value[1]) : null;
+      },
+      addQueue: function (el) {
+        var $$ = this.$;
+        var app = this.$app;
+        var q_wait = parseInt($$("#"+el+"_wait").text());
+        var q_cur = parseInt($$("#"+el+'_cur').text());
+        var q_sum = q_wait+q_cur+1
+        document.cookie = ""+el+"_my="+q_sum;
+        $$("#"+el+'_my').text(q_sum)
+        console.log(el+"+"+q_sum)
+        console.log(this.getCookie(el+"_my"))
+      }
+    },
     on: {
       pageInit: function (e, page) {
         var self = this;
         var today = new Date();
         var app = self.$app;
         var $$ = self.$;
+        var q1 = [3,10];
+        var q2 = [4,13];
+        var q3 = [5,18];
+        var q4 = [2,9];
+        var q5 = [5,12];
+
+        $$('#q1_wait').text(q1[0])
+        $$('#q2_wait').text(q2[0])
+        $$('#q3_wait').text(q3[0])
+        $$('#q4_wait').text(q4[0])
+        $$('#q5_wait').text(q5[0])
+
+        $$('#q1_cur').text(q1[1])
+        $$('#q2_cur').text(q2[1])
+        $$('#q3_cur').text(q3[1])
+        $$('#q4_cur').text(q4[1])
+        $$('#q5_cur').text(q5[1])
+
+        $$('#q1_my').text(this.getCookie("q1_my") == "" ? "-" : this.getCookie("q1_my") )
+        $$('#q2_my').text(this.getCookie("q2_my") == "" ? "-" : this.getCookie("q2_my"))
+        $$('#q3_my').text(this.getCookie("q3_my") == "" ? "-" : this.getCookie("q3_my"))
+        $$('#q4_my').text(this.getCookie("q4_my") == "" ? "-" : this.getCookie("q4_my"))
+        $$('#q5_my').text(this.getCookie("q5_my") == "" ? "-" : this.getCookie("q5_my"))
+
+
+        setInterval(function(){ 
+
+          var x = Math.floor((Math.random() * 2) + 1);
+
+          if (x == 1)
+          {
+            q1[0] = q1[0]+1;
+            q2[0] = q2[0]+1;
+            q3[0] = q3[0]+1;
+            q4[0] = q4[0]+1;
+            q5[0] = q5[0]+1;
+          }
+          else
+          {
+            q1[0] = q1[0] == 0 ? 0 : q1[0]-1;
+            q2[0] = q2[0] == 0 ? 0 : q2[0]-1;
+            q3[0] = q3[0] == 0 ? 0 : q3[0]-1;
+            q4[0] = q4[0] == 0 ? 0 : q4[0]-1;
+            q5[0] = q5[0] == 0 ? 0 : q5[0]-1;
+
+            q1[1] = q1[1]+1;
+            q2[1] = q2[1]+1;
+            q3[1] = q3[1]+1;
+            q4[1] = q4[1]+1;
+            q5[1] = q5[1]+1;
+          }
+          $$('#q1_wait').text(q1[0])
+          $$('#q2_wait').text(q2[0])
+          $$('#q3_wait').text(q3[0])
+          $$('#q4_wait').text(q4[0])
+          $$('#q5_wait').text(q5[0])
+
+          $$('#q1_cur').text(q1[1])
+          $$('#q2_cur').text(q2[1])
+          $$('#q3_cur').text(q3[1])
+          $$('#q4_cur').text(q4[1])
+          $$('#q5_cur').text(q5[1])
+          //console.log("xx"+ q1[1])
+        }, 10000);
+
+
       },
       pageBeforeRemove() {
         var self = this;
         
       },
+      
     }
   }
 </script>
