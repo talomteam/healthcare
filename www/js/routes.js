@@ -91,6 +91,10 @@ routes = [
     path: '/patientHistory/',
     url: './pages/patientHistory.html',
   },
+  {
+    path: '/scheduleMedication/',
+    componentUrl: './pages/scheduleMedication.html',
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     path: '(.*)',
